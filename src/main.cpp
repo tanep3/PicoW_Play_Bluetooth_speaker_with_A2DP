@@ -857,11 +857,8 @@ static int a2dp_source_and_avrcp_services_init(void)
     // Request role change on reconnecting headset to always use them in slave mode
     hci_set_master_slave_policy(0);
 
-    // HCIイベントハンドラの登録
     // 検出モードを設定して、他のデバイスを見つけやすくしています。
     hci_set_inquiry_mode(INQUIRY_MODE_RSSI_AND_EIR);
-    hci_event_callback_registration.callback = &hci_event_handler;
-    hci_add_event_handler(&hci_event_callback_registration);
 
     // L2CAPレイヤーを初期化します。これは、Bluetoothのデータ通信に必要な部分です。
     l2cap_init();
